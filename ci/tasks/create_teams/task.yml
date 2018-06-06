@@ -1,0 +1,17 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source:
+    repository: docker.prod.pdc.digital.csaa-insurance.aaa.com/ubuntu-ruby-aws
+    tag: latest
+
+inputs:
+  - name: concourse-teams-repo
+
+run:
+  path: concourse-teams-repo/ci/tasks/create_teams/available-products.rb
+
+params:
+  SOME_VARIABLE:
+  ANOTHER_VARIABLE:

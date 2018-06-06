@@ -1,0 +1,84 @@
+resource_types:
+- name: ubuntu
+  type: docker-image
+  source:
+    repository: docker.prod.pdc.digital.csaa-insurance.aaa.com/ubuntu-ruby-aws
+    tag: latest
+
+jobs:
+- name: create-pdc-teams
+  plan:
+  - get: concourse-teams-repo
+    trigger: true
+  - get: 15m
+    trigger: true
+  - task: create-sync-teams
+    file: concourse-teams-repo/ci/tasks/create_teams/task.yml
+    params:
+      CONCOUSE_ENV: {pdc_concourse_env}
+      CONCOURSE_ADMIN: {pdc_concourse_admin}
+      CONCOURSE_PASS: {pdc_concourse_pass}
+      CONCOURSE_URL: {pdc_concourse_url}
+      CLIENT_ID: {pdc_client_id}
+      CLIENT_SECRET: {pdc_client_secret}
+      AUTH_URL: {pdc_auth_url}
+      TOKEN_URL: {pdc_token_url}
+      CF_URL: {pdc_cf_url}
+      CF_CA_CERT: {pdc_cf_ca_cert}
+
+- name: create-gdc-teams
+  plan:
+  - get: scheduler {{scheduler-time-window-start}} to {{scheduler-time-window-stop}}
+    trigger: true
+  - get: concourse-teams-repo
+    trigger: false
+  - task: create-sync-teams
+    file: concourse-teams-repo/ci/tasks/create_teams/task.yml
+    params:
+      CONCOUSE_ENV: {gdc_concourse_url}
+      CONCOURSE_USER: {gdc_concourse_user}
+      CONCOURSE_PASS: {gdc_concourse_pass}
+      CONCOURSE_URL: {gdc_concourse_url}
+      CLIENT_ID: {gdc_client_id}
+      CLIENT_SECRET: {gdc_client_secret}
+      AUTH_URL: {gdc_auth_url}
+      TOKEN_URL: {gdc_token_url}
+      CF_URL: {gdc_cf_url}
+      CF_CA_CERT: {gdc_cf_ca_cert}
+
+- name: create-sandbox-teams
+  plan:
+  - get: scheduler {{scheduler-time-window-start}} to {{scheduler-time-window-stop}}
+    trigger: true
+  - get: concourse-teams-repo
+    trigger: false
+  - task: create-sync-teams
+    file: concourse-teams-repo/ci/tasks/create_teams/task.yml
+    params:
+      CONCOUSE_ENV: {tent_concourse_url}
+      CONCOURSE_USER: {tent_concourse_user}
+      CONCOURSE_PASS: {tent_concourse_pass}
+      CONCOURSE_URL: {tent_concourse_url}
+      CLIENT_ID: {tent_client_id}
+      CLIENT_SECRET: {tent_client_secret}
+      AUTH_URL: {tent_auth_url}
+      TOKEN_URL: {tent_token_url}
+      CF_URL: {tent_cf_url}
+      CF_CA_CERT: {tent_cf_ca_cert}
+
+resources:
+- name: concourse-teams-repo
+  type: git
+  source:
+    uri: Need Real URI: ssh://git@ssh.github.com:443/aaa-ncnu-ie/pcf_info.git
+    branch: master
+    private_key: {{github_private_key}}
+- name: scheduler {{scheduler-time-window-start}} to {{scheduler-time-window-stop}}
+  type: time
+  source:
+    start: {{scheduler-time-window-start}}
+    stop: {{scheduler-time-window-stop}}
+    location: {{scheduler-time-location}}
+- name: 15m
+  type: time
+  source: {interval: 15m}

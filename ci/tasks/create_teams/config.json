@@ -1,0 +1,92 @@
+{
+  "quote-dev": {
+      "pdc_space_guid": "d399e06f-bd45-4863-b076-d6f884454841",
+      "gdc_space_guid": "673dd407-6d32-4f5d-9a0b-ccabc865495f",
+      "tent_space_guid": "not set"
+  },
+  "mypolicy-da-dev": {
+      "pdc_space_guid": "57af799c-9d61-4700-976e-c1a09c658b02",
+      "gdc_space_guid": "e138dff8-aa18-4354-ba10-87beb9ab571f",
+      "tent_space_guid": "850b06ef-e4ad-4297-a453-c48578661d66"
+  },
+  "connect-services-dev": {
+      "pdc_space_guid": "1f6419cb-96ff-4799-8bd4-b9d2772711cb",
+      "gdc_space_guid": "e9174097-ed85-4483-849e-c7526c2352e0",
+      "tent_space_guid": "not set"
+  },
+  "mypolicy-club-dev": {
+      "pdc_space_guid": "34fd1dd9-4820-4786-8851-e3960362c8db",
+      "gdc_space_guid": "a7225776-9e38-4c3d-9485-c2e93ec51e3f",
+      "tent_space_guid": "not set"
+  },
+  "ops_utilities-dev": {
+      "pdc_space_guid": "49fb5a29-272d-44fb-b145-451aabf38862",
+      "gdc_space_guid": "080b0f2f-3f67-439a-9519-fdd24557f338",
+      "tent_space_guid": "1d12b2f7-956a-4bd3-8898-10dee8e0dd77"
+  },
+  "mpc-dev": {
+      "pdc_space_guid": "7f35bac0-ee64-4165-83cb-8f35e3d58552",
+      "gdc_space_guid": "a3273e87-4f95-485d-9d56-d50c248c6b55",
+      "tent_space_guid": "not set"
+  },
+  "iportal": {
+      "pdc_space_guid": "a92e8a90-8a5a-49c4-8879-6b47aa943603",
+      "gdc_space_guid": "648ab22d-6a50-4529-92f6-c8991e232837",
+      "tent_space_guid": "not set"
+  },
+  "3cm": {
+      "pdc_space_guid": "71da0e4d-4d7a-40b1-a9f4-cfe500179a17",
+      "gdc_space_guid": "e7c05c17-b830-40d1-8f40-5fa42d3f0669",
+      "tent_space_guid": "not set"
+  },
+  "csaa-mobile-dev": {
+      "pdc_space_guid": "87303936-5515-4818-9d43-1db23cfcaef2",
+      "gdc_space_guid": "not set",
+      "tent_space_guid": "not set"
+  },
+  "PAS": {
+      "pdc_space_guid": "a74622dd-2acd-4b79-b108-90d6f5e21ef0",
+      "gdc_space_guid": "eb14bd14-8829-498b-be1c-baeab9a99485",
+      "tent_space_guid": "not set"
+  },
+  "qa-services-dev": {
+      "pdc_space_guid": "2676022a-45f2-47dd-a900-0dfc38d2638e",
+      "gdc_space_guid": "cea35d7e-9819-4ffd-ad43-86c1f3cfc9f3",
+      "tent_space_guid": "not set"
+  },
+  "claims-rideshare": {
+      "pdc_space_guid": "63c064e6-f983-488b-9877-bc2c89997de8",
+      "gdc_space_guid": "915261c6-3611-44e7-a738-53113d3be6a8",
+      "tent_space_guid": "not set"
+  },
+  "pref-mgtm": {
+      "pdc_space_guid": "ccbca80a-7a14-4179-a27a-f93b5e0a8ab6",
+      "gdc_space_guid": "not set",
+      "tent_space_guid": "not set"
+  },
+  "security-test": {
+      "pdc_space_guid": "8be336f3-fa0f-4713-8348-9c7a28451ad9",
+      "gdc_space_guid": "not set",
+      "tent_space_guid": "not set"
+  },
+  "shared-service": {
+      "pdc_space_guid": "b683c3f8-ae33-4008-87b5-4365707ead3a",
+      "gdc_space_guid": "fda7a97f-6697-4236-94fb-bfad3fd45fa0",
+      "tent_space_guid": "not set"
+  },
+  "envoy2": {
+      "pdc_space_guid": "973caec2-4471-4058-bf39-99309da43fcd",
+      "gdc_space_guid": "3d3c89a4-ce34-4c87-9631-36d4c758bd18",
+      "tent_space_guid": "b37e3263-b9eb-4465-80f5-bf4a4f4c12fd"
+  },
+  "test-team": {
+      "pdc_space_guid": "973caec2-4471-4058-bf39-99309da43fcd",
+      "gdc_space_guid": "3d3c89a4-ce34-4c87-9631-36d4c758bd18",
+      "tent_space_guid": "b37e3263-b9eb-4465-80f5-bf4a4f4c12fd"
+  },
+  "csaa-connected-driving-dev": {
+      "pdc_space_guid": "7e985452-c9a6-4055-8259-dd0fa4d9fd6d",
+      "gdc_space_guid": "735c9802-aef2-4503-8168-5bbcda5f3328",
+      "tent_space_guid": "68b33519-4ef2-43bb-83b1-201f0079de77"
+  }
+}
