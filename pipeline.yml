@@ -25,6 +25,7 @@ jobs:
       TOKEN_URL: {pdc_token_url}
       CF_URL: {pdc_cf_url}
       CF_CA_CERT: {pdc_cf_ca_cert}
+      WILDCARD_CERT: {wildcard_cert}
 
 - name: create-gdc-teams
   plan:
@@ -45,6 +46,7 @@ jobs:
       TOKEN_URL: {gdc_token_url}
       CF_URL: {gdc_cf_url}
       CF_CA_CERT: {gdc_cf_ca_cert}
+      WILDCARD_CERT: {wildcard_cert}
 
 - name: create-sandbox-teams
   plan:
@@ -65,6 +67,7 @@ jobs:
       TOKEN_URL: {tent_token_url}
       CF_URL: {tent_cf_url}
       CF_CA_CERT: {tent_cf_ca_cert}
+      WILDCARD_CERT: {nonwildcard_cert}
 
 resources:
 - name: concourse-teams-repo
