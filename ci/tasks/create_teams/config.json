@@ -84,6 +84,11 @@
       "gdc_space_guid": "3d3c89a4-ce34-4c87-9631-36d4c758bd18",
       "tent_space_guid": "b37e3263-b9eb-4465-80f5-bf4a4f4c12fd"
   },
+  "test-team2": {
+      "pdc_space_guid": "not set",
+      "gdc_space_guid": "not set",
+      "tent_space_guid": "b37e3263-b9eb-4465-80f5-bf4a4f4c12fd"
+  },
   "csaa-connected-driving-dev": {
       "pdc_space_guid": "7e985452-c9a6-4055-8259-dd0fa4d9fd6d",
       "gdc_space_guid": "735c9802-aef2-4503-8168-5bbcda5f3328",
