@@ -11,7 +11,8 @@ def get_space_name_and_guid(spaces)
       if k == "entity"
         if v['name'].include?("dev") || v['name'].include?("DEV")
           if !v['name'].include?("dev2")
-          spaces_and_guid.merge!("#{v['name']}": "#{v['apps_url']}".split("/v2/spaces/")[1].split("/apps")[0])
+            spaces_and_guid.merge!("#{v['name']}": "#{v['apps_url']}".split("/v2/spaces/")[1].split("/apps")[0])
+          end
         end
       end
     end
