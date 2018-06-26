@@ -1,23 +1,42 @@
 #!/usr/bin/env ruby
 require 'json'
+require_relative 'get_token'
+require_relative 'get_org_name_array'
+require_relative 'get_space_url_info'
+require_relative 'get_space_name_and_guid'
+require_relative 'create_team_method'
+require_relative 'connect_to_concourse'
+#require_relative 'create_teams_method'
+
+uaa_admin = "#{ENV['UAA_ADMIN']}"
+uaa_pass = "#{ENV['UAA_PASS']}"
+uaa_url = "#{ENV['UAA_URL']}"
+pcf_env_url = "#{ENV['PCF_ENV_URL']}"
+c_env = "#{ENV['CONCOURSE_ENV']}"
+c_user = "#{ENV['CONCOURSE_ADMIN']}"
+c_pass = "#{ENV['CONCOURSE_PASS']}"
+c_url = "#{ENV['CONCOURSE_URL']}"
+client_id = "#{ENV['CLIENT_ID']}"
+client_secret = "#{ENV['CLIENT_SECRET']}"
+auth_url = "#{ENV['AUTH_URL']}"
+token_url = "#{ENV['TOKEN_URL']}"
+cf_url = "#{ENV['CF_URL']}"
+cert = "#{ENV['WILDCARD_CERT']}"
+
 wrkdir = Dir.pwd
-##{ENV['PCF_ENVIRONMENT']}
-file = File.read("#{wrkdir}/config.json")
-teams = JSON.parse(file)
-#create Cert File
-File.write("#{wrkdir}/wildcard.cer", "#{ENV['WILDCARD_CERT']}")
-#connect to concourse environment
-puts "logging onto #{ENV['CONCOURSE_ENV']}"
-fly = `fly login -t #{ENV['CONCOURSE_ENV']} -c #{ENV['CONCOURSE_URL']} -u #{ENV['CONCOURSE_ADMIN']} -p "#{ENV['CONCOURSE_PASS']}" -k`
-puts "syncing fly cli"
-flysync = `fly -t #{ENV['CONCOURSE_ENV']} sync`
-#create team from config.json
-teams.keys.each do |team|
-  unless teams["#{team}"]["#{ENV['CONCOURSE_ENV']}_space_guid"] == "not set"
-    puts "Started creating concourse team #{team}"
-    fly = `fly -t #{ENV['CONCOURSE_ENV']} set-team -n #{team} --non-interactive --uaa-auth-client-id #{ENV['CLIENT_ID']} --uaa-auth-client-secret '#{ENV['CLIENT_SECRET']}' --uaa-auth-auth-url #{ENV['AUTH_URL']} --uaa-auth-token-url #{ENV['TOKEN_URL']} --uaa-auth-cf-url #{ENV['CF_URL']} --uaa-auth-cf-ca-cert #{ENV['CF_CA_CERT']} --uaa-auth-cf-space #{teams["#{team}"]["#{ENV['CONCOURSE_ENV']}_space_guid"]}`
-    puts "Finished creating concourse team #{team}"
-  end
+#Create local cert file
+File.write("#{wrkdir}/wildcard.cer", "#{cert}")
+connect_to_concourse(c_env, c_user, c_pass, c_url)
+access_token = get_token(uaa_admin, uaa_pass, uaa_url)
+organizations = `curl "#{pcf_env_url}/v2/organizations" -X GET -H "Authorization: bearer #{access_token}" -k -s`
+orgs = get_org_name_array(organizations)
+orgs.each do |org|
+  puts "creating teams for #{org.upcase}"
+  spaces = `curl "#{pcf_env_url}/#{get_space_url_info(organizations, org)}" -X GET -H "Authorization: bearer #{access_token}" -k -s`
+  space_guid = get_space_name_and_guid(spaces)
+    space_guid.each do |space, guid|
+      create_team("#{space}", "#{guid}", c_env, client_id, client_secret, auth_url, token_url, cf_url)
+    end
 end
-#remove cert from system
+
 File.delete("#{wrkdir}/wildcard.cer") if File.exist?("#{wrkdir}/wildcard.cer")

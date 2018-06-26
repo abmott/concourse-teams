@@ -10,7 +10,7 @@ inputs:
   - name: concourse-teams-repo
 
 run:
-  path: concourse-teams-repo/ci/tasks/create_teams/available-products.rb
+  path: concourse-teams-repo/ci/tasks/create_teams/create_teams.rb
 
 params:
   SOME_VARIABLE:
