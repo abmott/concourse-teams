@@ -41,4 +41,4 @@ orgs.each do |org|
     end
 end
 
-File.delete("#{wrkdir}/wildcard.cer") if File.exist?("#{wrkdir}/wildcard.cer")
+#File.delete("#{wrkdir}/wildcard.cer") if File.exist?("#{wrkdir}/wildcard.cer")
