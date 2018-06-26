@@ -19,7 +19,7 @@ jobs:
       UAA_PASS: {{pdc_uaa_pass}}
       UAA_URL: {{pdc_uaa_url}}
       PCF_ENV_URL: {{pdc_pcf_env_url}}
-      CONCOUSE_ENV: {{pdc_concourse_env}}
+      CONCOURSE_ENV: {{pdc_concourse_env}}
       CONCOURSE_ADMIN: {{pdc_concourse_admin}}
       CONCOURSE_PASS: {{pdc_concourse_pass}}
       CONCOURSE_URL: {{pdc_concourse_url}}
@@ -43,8 +43,8 @@ jobs:
       UAA_PASS: {{gdc_uaa_pass}}
       UAA_URL: {{gdc_uaa_url}}
       PCF_ENV_URL: {{gdc_pcf_env_url}}
-      CONCOUSE_ENV: {{gdc_concourse_url}}
-      CONCOURSE_USER: {{gdc_concourse_admin}}
+      CONCOURSE_ENV: {{gdc_concourse_url}}
+      CONCOURSE_ADMIN: {{gdc_concourse_admin}}
       CONCOURSE_PASS: {{gdc_concourse_pass}}
       CONCOURSE_URL: {{gdc_concourse_url}}
       CLIENT_ID: {{gdc_client_id}}
@@ -67,8 +67,8 @@ jobs:
       UAA_PASS: {{tent_uaa_pass}}
       UAA_URL: {{tent_uaa_url}}
       PCF_ENV_URL: {{tent_pcf_env_url}}
-      CONCOUSE_ENV: {{tent_concourse_url}}
-      CONCOURSE_USER: {{tent_concourse_admin}}
+      CONCOURSE_ENV: {{tent_concourse_url}}
+      CONCOURSE_ADMIN: {{tent_concourse_admin}}
       CONCOURSE_PASS: {{tent_concourse_pass}}
       CONCOURSE_URL: {{tent_concourse_url}}
       CLIENT_ID: {{tent_client_id}}
