@@ -31,7 +31,9 @@ access_token = get_token(uaa_admin, uaa_pass, uaa_url)
 organizations = `curl "#{pcf_env_url}/v2/organizations" -X GET -H "Authorization: bearer #{access_token}" -k -s`
 orgs = get_org_name_array(organizations)
 orgs.each do |org|
+  puts "*******************************************"
   puts "creating teams for #{org.upcase}"
+  puts "*******************************************"
   spaces = `curl "#{pcf_env_url}/#{get_space_url_info(organizations, org)}" -X GET -H "Authorization: bearer #{access_token}" -k -s`
   space_guid = get_space_name_and_guid(spaces)
     space_guid.each do |space, guid|

@@ -14,5 +14,4 @@ def create_team(space, guid, c_env, client_id, client_secret, auth_url, token_ur
   --uaa-auth-cf-space #{guid}`
   puts "Finished creating concourse team #{space}"
   puts "--------------------------------------------------"
-  puts "--------------------------------------------------"
 end
