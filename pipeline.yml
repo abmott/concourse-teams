@@ -82,7 +82,7 @@ resources:
 - name: concourse-teams-repo
   type: git
   source:
-    uri: Need Real URI: ssh://git@ssh.github.com:443/aaa-ncnu-ie/pcf_info.git
+    uri: Need Real URI: ssh://git@ssh.github.com:443/aaa-ncnu-ie/concourse-teams.git
     branch: master
     private_key: {{github_private_key}}
 - name: scheduler {{scheduler-time-window-start}} to {{scheduler-time-window-stop}}
