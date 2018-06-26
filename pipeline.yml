@@ -2,7 +2,7 @@ resource_types:
 - name: ubuntu
   type: docker-image
   source:
-    repository: docker.prod.pdc.digital.csaa-insurance.aaa.com/ubuntu-ruby-aws-fly:latest
+    repository: docker.prod.pdc.digital.csaa-insurance.aaa.com/ubuntu-ruby-aws-fly
     tag: latest
 
 jobs:
