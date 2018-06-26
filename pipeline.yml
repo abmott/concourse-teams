@@ -2,7 +2,7 @@ resource_types:
 - name: ubuntu
   type: docker-image
   source:
-    repository: docker.prod.pdc.digital.csaa-insurance.aaa.com/ubuntu-ruby-aws
+    repository: docker.prod.pdc.digital.csaa-insurance.aaa.com/ubuntu-ruby-aws-fly
     tag: latest
 
 jobs:
@@ -32,10 +32,10 @@ jobs:
 
 - name: create-gdc-teams
   plan:
-  - get: scheduler {{scheduler-time-window-start}} to {{scheduler-time-window-stop}}
-    trigger: true
   - get: concourse-teams-repo
     trigger: false
+  - get: 15m
+    trigger: true
   - task: create-sync-teams
     file: concourse-teams-repo/ci/tasks/create_teams/task.yml
     params:
@@ -44,7 +44,7 @@ jobs:
       UAA_URL: {{gdc_uaa_url}}
       PCF_ENV_URL: {{gdc_pcf_env_url}}
       CONCOUSE_ENV: {{gdc_concourse_url}}
-      CONCOURSE_USER: {{gdc_concourse_user}}
+      CONCOURSE_USER: {{gdc_concourse_admin}}
       CONCOURSE_PASS: {{gdc_concourse_pass}}
       CONCOURSE_URL: {{gdc_concourse_url}}
       CLIENT_ID: {{gdc_client_id}}
@@ -56,10 +56,10 @@ jobs:
 
 - name: create-sandbox-teams
   plan:
-  - get: scheduler {{scheduler-time-window-start}} to {{scheduler-time-window-stop}}
-    trigger: true
   - get: concourse-teams-repo
-    trigger: false
+    trigger: true
+  - get: 15m
+    trigger: true
   - task: create-sync-teams
     file: concourse-teams-repo/ci/tasks/create_teams/task.yml
     params:
@@ -68,7 +68,7 @@ jobs:
       UAA_URL: {{tent_uaa_url}}
       PCF_ENV_URL: {{tent_pcf_env_url}}
       CONCOUSE_ENV: {{tent_concourse_url}}
-      CONCOURSE_USER: {{tent_concourse_user}}
+      CONCOURSE_USER: {{tent_concourse_admin}}
       CONCOURSE_PASS: {{tent_concourse_pass}}
       CONCOURSE_URL: {{tent_concourse_url}}
       CLIENT_ID: {{tent_client_id}}
@@ -82,15 +82,9 @@ resources:
 - name: concourse-teams-repo
   type: git
   source:
-    uri: Need Real URI: ssh://git@ssh.github.com:443/aaa-ncnu-ie/concourse-teams.git
+    uri: ssh://git@ssh.github.com:443/aaa-ncnu-ie/concourse-teams.git
     branch: master
     private_key: {{github_private_key}}
-- name: scheduler {{scheduler-time-window-start}} to {{scheduler-time-window-stop}}
-  type: time
-  source:
-    start: {{scheduler-time-window-start}}
-    stop: {{scheduler-time-window-stop}}
-    location: {{scheduler-time-location}}
 - name: 15m
   type: time
   source: {interval: 15m}
