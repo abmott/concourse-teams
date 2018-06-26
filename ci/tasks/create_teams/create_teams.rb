@@ -23,24 +23,6 @@ token_url = "#{ENV['TOKEN_URL']}"
 cf_url = "#{ENV['CF_URL']}"
 cert = "#{ENV['WILDCARD_CERT']}"
 
-puts uaa_admin
-puts uaa_pass
-puts uaa_url
-puts pcf_env_url
-puts c_env
-puts c_user
-puts c_pass
-puts c_url
-puts client_id
-puts client_secret
-puts auth_url
-puts token_url
-puts cf_url
-puts cert
-
-
-
-
 wrkdir = Dir.pwd
 #Create local cert file
 File.write("#{wrkdir}/wildcard.cer", "#{cert}")
