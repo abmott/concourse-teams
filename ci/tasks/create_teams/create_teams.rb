@@ -35,7 +35,7 @@ orgs.each do |org|
   spaces = `curl "#{pcf_env_url}/#{get_space_url_info(organizations, org)}" -X GET -H "Authorization: bearer #{access_token}" -k -s`
   space_guid = get_space_name_and_guid(spaces)
     space_guid.each do |space, guid|
-      create_team("#{space}", "#{guid}", c_env, client_id, client_secret, auth_url, token_url, cf_url)
+      create_team("#{space}", "#{guid}", "#{c_env}", "#{client_id}", "#{client_secret}", "#{auth_url}", "#{token_url}", "#{cf_url}")
     end
 end
 
