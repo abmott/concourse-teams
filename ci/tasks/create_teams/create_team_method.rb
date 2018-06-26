@@ -3,6 +3,7 @@
 def create_team(space, guid, c_env, client_id, client_secret, auth_url, token_url, cf_url)
   wrkdir = Dir.pwd
   puts "Started creating concourse team #{space}"
+  puts "#{c_env} #{space}"
   fly = `fly -t #{c_env} set-team -n #{space} \
   --non-interactive \
   --uaa-auth-client-id #{client_id} \
