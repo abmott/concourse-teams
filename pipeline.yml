@@ -76,6 +76,7 @@ jobs:
       AUTH_URL: {{tent_auth_url}}
       TOKEN_URL: {{tent_token_url}}
       CF_URL: {{tent_cf_url}}
+      TEAM_BLACKLIST: {{tent_team_blacklist}}
       WILDCARD_CERT: {{nonprod_wildcard}}
 
 resources:

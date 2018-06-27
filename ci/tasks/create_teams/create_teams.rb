@@ -22,6 +22,7 @@ auth_url = "#{ENV['AUTH_URL']}"
 token_url = "#{ENV['TOKEN_URL']}"
 cf_url = "#{ENV['CF_URL']}"
 cert = "#{ENV['WILDCARD_CERT']}"
+team_blacklist = "#{ENV['TEAM_BLACKLIST']}.split(', ')"
 
 wrkdir = Dir.pwd
 #Create local cert file
@@ -36,9 +37,20 @@ orgs.each do |org|
   puts "*******************************************"
   spaces = `curl "#{pcf_env_url}/#{get_space_url_info(organizations, org)}" -X GET -H "Authorization: bearer #{access_token}" -k -s`
   space_guid = get_space_name_and_guid(spaces)
+  team_blacklist.each do |blacklist|
     space_guid.each do |space, guid|
+      space = space.to_s
+      if space.include? "#{blacklist}"
+        space_guid.tap { |h| h.delete(:"#{space}")}
+      end
+    end
+  end
+  space_guid.each do |space, guid|
+    space = space.to_s
+    if space.include?("dev") || space.include?("DEV") || space.include?("Dev")
       create_team("#{space}", "#{guid}", "#{c_env}", "#{client_id}", "#{client_secret}", "#{auth_url}", "#{token_url}", "#{cf_url}")
     end
+  end
 end
 
-#File.delete("#{wrkdir}/wildcard.cer") if File.exist?("#{wrkdir}/wildcard.cer")
+File.delete("#{wrkdir}/wildcard.cer") if File.exist?("#{wrkdir}/wildcard.cer")
