@@ -48,6 +48,7 @@ orgs.each do |org|
   space_guid.each do |space, guid|
     space = space.to_s
     if space.include?("dev") || space.include?("DEV") || space.include?("Dev")
+      puts "make team"
       create_team("#{space}", "#{guid}", "#{c_env}", "#{client_id}", "#{client_secret}", "#{auth_url}", "#{token_url}", "#{cf_url}")
     end
   end
