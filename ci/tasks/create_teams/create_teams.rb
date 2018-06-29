@@ -37,6 +37,7 @@ orgs.each do |org|
   puts "*******************************************"
   spaces = `curl "#{pcf_env_url}/#{get_space_url_info(organizations, org)}" -X GET -H "Authorization: bearer #{access_token}" -k -s`
   space_guid = get_space_name_and_guid(spaces)
+  #remove blacklist spaces from space_guid hash
   team_blacklist.each do |blacklist|
     space_guid.each do |space, guid|
       space = space.to_s
@@ -45,11 +46,13 @@ orgs.each do |org|
       end
     end
   end
+  #Create spaces with dev, Dev and DEV
   space_guid.each do |space, guid|
     space = space.to_s
     if space.include?("dev") || space.include?("DEV") || space.include?("Dev")
       puts "make team"
       puts "#{space}"
+      puts "#{guid}"
       create_team("#{space}", "#{guid}", "#{c_env}", "#{client_id}", "#{client_secret}", "#{auth_url}", "#{token_url}", "#{cf_url}")
     end
   end
