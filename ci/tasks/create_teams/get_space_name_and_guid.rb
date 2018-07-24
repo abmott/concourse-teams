@@ -6,13 +6,13 @@ require_relative 'get_space_info'
 def get_space_name_and_guid(env_url, page_url, token)
   page = 1
   lastpage = 10
-  puts page_url
-  page_url = page_url + "?order-direction=asc&results-per-page=10"
-  puts page_url
+  #puts page_url
+  page_url = page_url + "?order-direction=asc&results-per-page=100"
+  #puts page_url
   spaces_and_guid = Hash.new
   until page > lastpage
     data = `curl "#{env_url}#{page_url}" -X GET -H "Authorization: bearer #{token}" -k -s`
-    puts "#{env_url}#{page_url}"
+    #puts "#{env_url}#{page_url}"
     space = JSON.parse(data)
     #puts space['total_pages']
     lastpage = space['total_pages']
