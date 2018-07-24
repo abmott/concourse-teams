@@ -7,7 +7,7 @@ def get_space_name_and_guid(env_url, page_url, token)
   page = 1
   lastpage = 10
   puts page_url
-  page_url = page_url + "?order-direction=asc&results-per-page=100"
+  page_url = page_url + "?order-direction=asc&results-per-page=10"
   puts page_url
   spaces_and_guid = Hash.new
   until page > lastpage
