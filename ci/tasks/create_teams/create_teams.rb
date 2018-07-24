@@ -35,7 +35,7 @@ orgs.each do |org|
   puts "*******************************************"
   puts "creating teams for #{org.upcase}"
   puts "*******************************************"
-  spaces = `curl "#{pcf_env_url}/#{get_space_url_info(organizations, org)}" -X GET -H "Authorization: bearer #{access_token}" -k -s`
+  spaces = `curl "#{pcf_env_url}/#{get_space_url_info(organizations, org)?results-per-page=100}" -X GET -H "Authorization: bearer #{access_token}" -k -s`
   space_guid = get_space_name_and_guid(spaces)
   #remove blacklist spaces from space_guid hash
   team_blacklist.each do |blacklist|
