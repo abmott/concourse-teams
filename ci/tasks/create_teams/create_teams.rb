@@ -37,7 +37,9 @@ orgs.each do |org|
   puts "*******************************************"
 
   #spaces = `curl "#{pcf_env_url}/#{get_space_url_info(organizations, org)}?results-per-page=100" -X GET -H "Authorization: bearer #{access_token}" -k -s`
-  space_guid = get_space_name_and_guid(pcf_env_url, get_space_url_info(organizations, org), access_token)
+  space_url = get_space_url_info(organizations, org)
+  puts space_url
+  space_guid = get_space_name_and_guid(pcf_env_url, space_url, access_token)
   #remove blacklist spaces from space_guid hash
   team_blacklist.each do |blacklist|
     space_guid.each do |space, guid|
