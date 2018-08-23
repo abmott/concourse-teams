@@ -28,7 +28,7 @@ jobs:
       AUTH_URL: {{pdc_auth_url}}
       TOKEN_URL: {{pdc_token_url}}
       CF_URL: {{pdc_cf_url}}
-      WILDCARD_CERT: {{prod_wildcard_old}}
+      WILDCARD_CERT: {{prod_wildcard}}
 
 - name: create-gdc-teams
   plan:
