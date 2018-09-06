@@ -23,6 +23,7 @@ token_url = "#{ENV['TOKEN_URL']}"
 cf_url = "#{ENV['CF_URL']}"
 cert = "#{ENV['WILDCARD_CERT']}"
 team_blacklist = "#{ENV['TEAM_BLACKLIST']}".split(', ')
+puts "#{team_blacklist}"
 
 wrkdir = Dir.pwd
 #Create local cert file
