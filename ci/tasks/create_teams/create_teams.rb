@@ -45,6 +45,7 @@ orgs.each do |org|
     space_guid.each do |space, guid|
       space = space.to_s
       if space.include? "#{blacklist}"
+        puts "Did not create blacklisted team #{space}"
         space_guid.tap { |h| h.delete(:"#{space}")}
       end
     end
