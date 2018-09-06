@@ -42,6 +42,7 @@ orgs.each do |org|
   space_guid = get_space_name_and_guid(pcf_env_url, space_url, access_token)
   #remove blacklist spaces from space_guid hash
   team_blacklist.each do |blacklist|
+    puts blacklist
     space_guid.each do |space, guid|
       space = space.to_s
       if space.include? "#{blacklist}"
